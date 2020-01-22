@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace GameEngine.Tests
@@ -112,6 +113,53 @@ namespace GameEngine.Tests
             PlayerCharacter sut = new PlayerCharacter();
 
             Assert.Null(sut.Nickname);
+        }
+
+        [Fact]
+        public void HaveALongBow()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            Assert.Contains("Long Bow", sut.Weapons);
+        }
+
+        [Fact]
+        public void NotHaveAStaffOfWonder()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            Assert.DoesNotContain("Staff Of Wonder", sut.Weapons);
+        }
+
+        [Fact]
+        public void HaveAtLeastOneKindOfSword()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            Assert.Contains(sut.Weapons, weapon => weapon.Contains("Sword"));
+        }
+
+        [Fact]
+        public void HaveAllExpectedStartingWeapons()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            List<string> expectedWeapons = new List<string> 
+            {
+                "Long Bow",
+                "Short Bow",
+                "Short Sword"
+            };
+
+            Assert.Equal(expectedWeapons, sut.Weapons);
+        }
+
+        [Fact]
+        public void HaveNoEmptyDefaultWeapons()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            Assert.All(sut.Weapons, weapon => Assert.False(string.IsNullOrWhiteSpace(weapon)));
         }
     }
 }
