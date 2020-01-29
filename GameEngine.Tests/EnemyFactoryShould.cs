@@ -18,7 +18,7 @@ namespace GameEngine.Tests
             Assert.IsType<NormalEnemy>(enemy);
         }
 
-        [Fact]
+        [Fact(Skip = "Description is here and no need this test.")]
         public void NotCreateBossEnemyByDefault()
         {
             EnemyFactory sut = new EnemyFactory();
