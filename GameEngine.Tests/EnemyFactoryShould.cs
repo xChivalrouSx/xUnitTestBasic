@@ -5,6 +5,7 @@ using Xunit;
 
 namespace GameEngine.Tests
 {
+    [Trait("Category", "Enemy")]
     public class EnemyFactoryShould
     {
         [Fact]
