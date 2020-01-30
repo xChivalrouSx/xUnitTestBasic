@@ -175,5 +175,14 @@ namespace GameEngine.Tests
 
             Assert.Equal(expectedHealth, _sut.Health);
         }
+
+        [Theory]
+        [MemberData(nameof(InternalHealthDemageTestData.TestData), MemberType = typeof(InternalHealthDemageTestData))]
+        public void TakeDemage_SharingTestDataExample(int damage, int expectedHealth)
+        {
+            _sut.TakeDamage(damage);
+
+            Assert.Equal(expectedHealth, _sut.Health);
+        }
     }
 }
