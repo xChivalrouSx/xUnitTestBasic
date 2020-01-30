@@ -193,5 +193,14 @@ namespace GameEngine.Tests
 
             Assert.Equal(expectedHealth, _sut.Health);
         }
+
+        [Theory]
+        [HealthDemageData]
+        public void TakeDemage_SharingTestDataExample_CustomDataSource(int damage, int expectedHealth)
+        {
+            _sut.TakeDamage(damage);
+
+            Assert.Equal(expectedHealth, _sut.Health);
+        }
     }
 }
